@@ -22,6 +22,7 @@ exports.createRestaurantService = async (req, user) => {
             description: req.description,
             images: req.images,
             name: req.name,
+            rating:req.rating,
             openingHours: req.openingHours,
             registrationDate: req.registrationDate,
             owner: user,

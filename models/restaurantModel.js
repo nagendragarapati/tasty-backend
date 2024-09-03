@@ -19,7 +19,7 @@ const RestaurantSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Order',
   }],
-  numRating: Number,
+  rating: Number,
   images: [String], 
   registrationDate: {
     type: Date,

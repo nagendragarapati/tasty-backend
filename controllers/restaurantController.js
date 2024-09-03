@@ -8,9 +8,8 @@ const Address = require('../models/addressModel')
 exports.getAllRestaurants = async (req, res) => {
     try {
         const restaurants = await Restaurant.find().populate("address");
-        res.status(200).json({
-            data: restaurants
-        })
+        res.status(200)
+        res.send(restaurants)
     } catch (error) {
         res.json({
             message: error.message

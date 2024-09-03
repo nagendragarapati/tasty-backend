@@ -1,10 +1,12 @@
 var express = require('express');
 var cookieParser = require('cookie-parser');
 const connectToDB = require('./config/db')
+const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 
 var app = express();
+app.use(cors());
 
 app.use(express.json());
 app.use(cookieParser());
