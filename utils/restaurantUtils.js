@@ -38,7 +38,7 @@ exports.createRestaurantService = async (req, user) => {
 
 exports.findRestaurantById = async (id) => {
     try {
-        const restaurant = await Restaurant.findById(id).populate("foods")
+        const restaurant = await Restaurant.findById(id).populate("foods").populate("address")
         if (!restaurant) {
             throw new Error(`Restaurant not found with this Id ${id}`)
         }
@@ -71,6 +71,7 @@ exports.createFoodItem = async (req, restaurant) => {
     try {
         const food = new Food({
             foodCategory: req.foodCategory,
+            rating:req.rating,
             creationDate: new Date(),
             description: req.description,
             images: req.images,

@@ -23,9 +23,8 @@ exports.getRestaurantById = async (req, res) => {
     const { id } = req.params
     try {
         const restaurant = await restaurantUtils.findRestaurantById(id)
-        res.status(200).json({
-            data: restaurant
-        })
+        res.status(200)
+        res.send(restaurant)
     }
     catch (err) {
         if (err instanceof Error) {

@@ -6,6 +6,7 @@ const FoodSchema = new mongoose.Schema({
   description: String,
   price: Number,
   foodCategory: String,
+  rating:Number,
   images: [String],
   available: Boolean,
   quantity:Number,

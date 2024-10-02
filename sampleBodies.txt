@@ -1,0 +1,62 @@
+//Signup
+
+{
+    "fullName":"NagendraGarapati",
+    "email":"nag09@gmail.com",
+    "password":"nagendra091997",
+    "role":"ROLE_CUSTOMER",
+    "orders":[],
+    "address":[],
+    "favorites":[],
+    "status":""
+
+}
+
+// Login
+
+{
+    "email":"nag09@gmail.com",
+    "password":"nagendra091997"
+}
+
+// Create Restaurant
+
+{
+  "name": "Sample Restaurant Name",
+  "description": "A delightful eatery offering delicious food and warm hospitality.",
+  "cuisineType": "Italian",
+  "address": {
+    "streetAddress": "123 Main Street",
+    "city": "Anytown",
+    "stateProvince": "CA",
+    "postalCode": "12345",
+    "country": "USA"
+  },
+  "contactInformation": {
+    "email": "info@samplerestaurant.com",
+    "mobile": "+1 (555) 555-1234",
+    "twitter": "sample_restaurant",
+    "instagram": "sample_restaurant"
+  },
+  "openingHours": "",
+  "images": [
+    "https://placeimg.com/640/480/arch",
+    "https://placeimg.com/640/480/food",
+    "https://placeimg.com/640/480/people"
+  ]
+}
+
+// Create food
+
+{
+  "name": "Chicken Biryani",
+  "description": "Delicious Dum Biryani",
+  "price": 250,
+  "category": "South Indian",
+  "images": ["https://example.com/pizza1.jpg", "https://example.com/pizza2.jpg"],
+  "restaurantId": "66c974c86d0f40e860e4d9ce",
+  "vegetarian": false,
+  "seasonal": true,
+  "quantity": 25,
+  "ingredients": ["Chicken","tomato soup","ginger garlic"]
+}
