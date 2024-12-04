@@ -1,42 +1,46 @@
 const User = require('../models/userModel')
 const userValidations = require("../utils/userUtils")
 const jwt = require("jsonwebtoken");
+const cartController=require("./cartControllers")
 
 let token
 
 exports.signUp = async (req, res) => {
-
     try {
-        const userData = req.body
-        const { email } = userData
-        const validateuserData = userValidations.validateUserData(userData)
-        const isUserExist = await User.findOne({ email })
-        if (isUserExist) {
-            throw new Error("user already exist with email");
-        }
-        if (validateuserData.isValid) {
-            const user = await User.create(userData)
+        const userData = req.body;
+        const { email } = userData;
+        const validateuserData = userValidations.validateUserData(userData);
+        const isUserExist = await User.findOne({ email });
 
-            res.status(201).json({
-                status: 'success',
-                data: {
-                    user,
-                },
+        if (isUserExist) {
+            throw new Error("User already exists with this email");
+        }
+
+        if (validateuserData.isValid) {
+            const user = await User.create(userData);
+            await cartController.createCart(user);
+
+            const payload = {
+                userId: user._id,
+            };
+            const token = jwt.sign(payload, "MY_SECRET_TOKEN");
+            return res.status(201).send({
+                token,
+                message: "SignUp Success"
+            });
+        } else {
+            return res.status(400).send({
+                message: validateuserData.statusMsg,
             });
         }
-        else {
-            res.status(400).json({
-                status: validateuserData.statusMsg,
-            });
-        }
-    }
-    catch (err) {
-        res.status(400).json({
+    } catch (err) {
+        res.status(500).send({
             status: 'fail',
             message: err.message,
         });
     }
-}
+};
+
 
 exports.login = async (req, res) => {
     const { email, password } = req.body
